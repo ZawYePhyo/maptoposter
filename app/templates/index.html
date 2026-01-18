@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapToPostcard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MapToPostcard</h1>
+            <p class="subtitle">Create beautiful map postcards with personalized messages</p>
+        </header>
+
+        <main>
+            <form id="postcard-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" placeholder="Barcelona" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" placeholder="Spain" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="theme">Theme</label>
+                    <div id="theme-container">
+                        <select id="theme" name="theme">
+                            <option value="">Loading themes...</option>
+                        </select>
+                        <div id="theme-preview" class="theme-preview"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="distance">Map Distance: <span id="distance-value">8000</span>m</label>
+                    <input type="range" id="distance" name="distance" min="3000" max="25000" value="8000" step="1000">
+                    <div class="distance-hints">
+                        <span>Small/Dense</span>
+                        <span>Large Metro</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Dear Mom,
+
+Having a wonderful time in Barcelona! The weather is perfect.
+
+Love, Sarah"></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="fast" name="fast" checked>
+                        <span>Fast mode</span>
+                        <span class="hint">(~10 sec, roads only, 150 DPI)</span>
+                    </label>
+                    <p class="checkbox-description">Uncheck for high quality with water/parks (60+ sec, 300 DPI)</p>
+                </div>
+
+                <button type="submit" id="generate-btn">
+                    <span class="btn-text">Generate Postcard</span>
+                    <span class="btn-loading hidden">
+                        <span class="spinner"></span>
+                        Generating...
+                    </span>
+                </button>
+            </form>
+
+            <div id="loading-message" class="hidden">
+                <div class="loading-content">
+                    <div class="spinner large"></div>
+                    <p>Generating your postcard...</p>
+                    <p class="loading-hint">This may take 15-30 seconds as we fetch map data from OpenStreetMap.</p>
+                </div>
+            </div>
+
+            <div id="result" class="hidden">
+                <h2>Your Postcard</h2>
+                <div class="postcard-preview">
+                    <img id="postcard-image" src="" alt="Generated postcard">
+                </div>
+                <div class="actions">
+                    <a id="download-btn" href="" download class="btn btn-primary">Download Postcard</a>
+                    <button type="button" id="new-btn" class="btn btn-secondary">Create Another</button>
+                </div>
+            </div>
+
+            <div id="error" class="hidden">
+                <div class="error-content">
+                    <h3>Oops!</h3>
+                    <p id="error-message"></p>
+                    <button type="button" id="retry-btn" class="btn btn-secondary">Try Again</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
