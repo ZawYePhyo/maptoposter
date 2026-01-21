@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MapToPostcard</title>
+    <title>Mapcard</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
+
 <body>
     <div class="container">
         <header>
-            <h1>MapToPostcard</h1>
+            <div class="header-brand">
+                <img src="/static/mapcardlogo.png" alt="Mapcard Logo" class="logo">
+                <h1>Mapcard</h1>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+            </div>
             <p class="subtitle">Create beautiful map postcards with personalized messages</p>
         </header>
 
@@ -74,7 +81,8 @@ Love, Sarah"></textarea>
 
             <div id="loading-message" class="hidden">
                 <div class="loading-content">
-                    <div class="spinner large"></div>
+                    <lottie-player src="/static/loading.json" background="transparent" speed="1"
+                        style="width: 200px; height: 200px;" loop autoplay></lottie-player>
                     <p>Generating your postcard...</p>
                     <p class="loading-hint">This may take 15-30 seconds as we fetch map data from OpenStreetMap.</p>
                 </div>
@@ -101,10 +109,12 @@ Love, Sarah"></textarea>
         </main>
 
         <footer>
-            <p>Map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors</p>
+            <p>Map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>
+                contributors</p>
         </footer>
     </div>
 
     <script src="/static/js/app.js"></script>
 </body>
+
 </html>

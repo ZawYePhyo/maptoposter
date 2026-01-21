@@ -13,7 +13,7 @@ APP_DIR = Path(__file__).parent
 PROJECT_ROOT = APP_DIR.parent
 
 app = FastAPI(
-    title="MapToPostcard",
+    title="Mapcard",
     description="Generate beautiful map postcards with personalized messages",
     version="1.0.0"
 )

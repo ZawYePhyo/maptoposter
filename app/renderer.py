@@ -268,29 +268,10 @@ def render_message_side(ax, message: str, theme: dict):
             verticalalignment='top', horizontalalignment='left',
             linespacing=1.5)
 
-    # Add postcard-style stamp area (decorative)
-    stamp_rect = plt.Rectangle((0.7, 0.75), 0.2, 0.15, transform=ax.transAxes,
-                                 fill=False, edgecolor=theme['text'],
-                                 linewidth=1, linestyle='--', alpha=0.3)
-    ax.add_patch(stamp_rect)
-    ax.text(0.8, 0.825, "STAMP", transform=ax.transAxes,
-            fontproperties=FontProperties(family='monospace', size=8),
-            color=theme['text'], alpha=0.3, ha='center', va='center')
-
     # Add decorative lines for "address" area
     for y in [0.4, 0.32, 0.24, 0.16]:
         ax.plot([0.1, 0.9], [y, y], transform=ax.transAxes,
                 color=theme['text'], linewidth=0.5, alpha=0.3)
-
-    # Attribution
-    if FONTS:
-        font_attr = FontProperties(fname=FONTS['light'], size=6)
-    else:
-        font_attr = FontProperties(family='monospace', size=6)
-
-    ax.text(0.9, 0.03, "\u00a9 OpenStreetMap contributors", transform=ax.transAxes,
-            color=theme['text'], alpha=0.5, ha='right', va='bottom',
-            fontproperties=font_attr)
 
 
 def create_postcard(
